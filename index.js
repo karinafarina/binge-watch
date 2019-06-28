@@ -10,13 +10,20 @@
 
 
 function displayListOfShows(responseJson) {
-  console.log('displaylistofshows responsjson: ', responseJson.Similar.Results);
   let results = responseJson.Similar.Results;
-  for(var i = 0; i < results; i++) {
+  console.log('results ', results);
+  for(var i = 0; i < results.length; i++) {
     console.log('each result: ',results[i]);
-    //$('.similar-show-list').append(`<li>${results[i]}</li>`);
+    $('.similar-show-list').append(`<li>${results[i].Name}</li>`);
   }
+  newSearch();
+}
 
+function newSearch() {
+  $('.new-search').click(function() {
+    $('.similar-shows').addClass('hidden');
+    $('.enter-show').removeClass('hidden');
+  })
 }
 
 //TAKE THE SHOWNAME VALUE AND WHEN THERE IS A CHANGE IN NUMBER OF SEASONS, SEND USER AN EMAIL.
