@@ -1,16 +1,16 @@
 'use strict';
 
-function formatQueryParams(params) {
-  const queryItems = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  return queryItems.join('&');
-}
+// function formatQueryParams(params) {
+//   const queryItems = Object.keys(params)
+//     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+//   return queryItems.join('&');
+// }
 
 //DISPLAY LIST OF SIMILAR SHOWS.
 
 
 function displayListOfShows(responseJson, url) {
-  console.log('response is: ', responseJson);
+  console.log('this one', responseJson);
   // $('.similar-show-list').append(`<li>`)
 }
 
@@ -19,10 +19,8 @@ function displayListOfShows(responseJson, url) {
 //HIDE THE SHOW-NAME SCREEN AND SHOW THE RESULTS SCREEN.
 //DISPLAY A MESSAGE STATING THE USER WILL RECEIVE AN EMAIL OF THE LIST OF SHOWS
 function sendEmail(showName) {
-
   //send email to user
   window.alert('You will be sent an email with this list of shows');
-
 }
 
 function getListOfShows(showName) {
@@ -37,14 +35,23 @@ function getListOfShows(showName) {
   }
   const url = `https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?q=${showName}&type=shows&info=1&limit=8&k=266210-Similars-D2TGC2V3`;
   console.log('url is: ', url);
-  fetch(url, options)
-    .then(response => response.json())
-    .then(responseJson => displayListofShows(responseJson, url))
-    .catch(error => alert('Something went wrong. Try again later.'));
-  console.log('response is: ',responseJson)
-  sendEmail(showName);
-}
 
+  fetch(url, options)
+    .then(response => {
+      console.log('response is: ', response);
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson =>{
+      console.log('responseJson: ', responseJson)
+       displayListofShows(responseJson)
+     })
+     .catch(err => {
+       $('#js-error-message').text(`Something went wrong: ${err.message}`);
+     });
+   }
 //HIDE THE SIGNUP SECTION AND SHOW THE ENTER SHOW SECTION, STORE THE USER VALUE OF SHOW NAME AS A VARIABLE
 function getNameOfShow() {
   $('.sign-up').addClass('hidden');
