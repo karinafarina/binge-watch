@@ -10,7 +10,7 @@
 
 
 function displayListOfShows(responseJson, url) {
-  console.log('this one', responseJson);
+  console.log('displaylistofshows responsjson: ', responseJson);
   // $('.similar-show-list').append(`<li>`)
 }
 
