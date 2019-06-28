@@ -10,8 +10,13 @@
 
 
 function displayListOfShows(responseJson) {
-  console.log('displaylistofshows responsjson: ', responseJson);
-  // $('.similar-show-list').append(`<li>`)
+  console.log('displaylistofshows responsjson: ', responseJson.Similar.Results);
+  let results = responseJson.Similar.Results;
+  for(var i = 0; i < results; i++) {
+    console.log('each result: ',results[i]);
+    //$('.similar-show-list').append(`<li>${results[i]}</li>`);
+  }
+
 }
 
 //TAKE THE SHOWNAME VALUE AND WHEN THERE IS A CHANGE IN NUMBER OF SEASONS, SEND USER AN EMAIL.
@@ -46,7 +51,7 @@ function getListOfShows(showName) {
     })
     .then(responseJson =>{
       console.log('responseJson: ', responseJson)
-       displayListofShows(responseJson)
+       displayListOfShows(responseJson)
      })
      .catch(err => {
        $('#js-error-message').text(`Something went wrong: ${err.message}`);
