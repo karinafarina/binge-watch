@@ -9,7 +9,7 @@
 //DISPLAY LIST OF SIMILAR SHOWS.
 
 
-function displayListOfShows(responseJson, url) {
+function displayListOfShows(responseJson) {
   console.log('displaylistofshows responsjson: ', responseJson);
   // $('.similar-show-list').append(`<li>`)
 }
