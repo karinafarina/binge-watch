@@ -19,18 +19,35 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: space-around;
+}
+
+.hidden {
+  display: none;
+}
+
 .sign-up {
 
 }
 
 .enter-show {
-  display: none;
+
 }
 
 .results {
-  display: none;
+
 }
 
 .similar-shows {
-  display: none;
+
+}
+
+.new-search {
+	display: flex;
+	align-self: center;
 }

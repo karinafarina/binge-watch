@@ -3,34 +3,31 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Show!</title>
+    <title>Binge Guide</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <section class="sign-up">
       <h1>Sign Up</h1>
-      <h2>Sign up to receive an email when the next season of your favorite show is released.</h2>
+      <h2>Sign up to receive an email with shows that are similar to your favorite binge shows.</h2>
       <form class="email-form">
-        <label for="email">Email Address</label>
+        <label for="email" name="email">Email Address</label>
         <input type="text" name="email" class="email" placeholder="Enter your email">
         <input type="submit" name="email" value="Submit">
       </form>
     </section>
-    <section class="enter-show">
+
+    <section class="enter-show hidden">
       <h1>Enter Show Name</h1>
-      <h2>Enter the name of your show to get emails and recommendations</h2>
-      <form class="show-name">
-        <label for="show-name">Show Name</label>
-        <input type="text" name="show-name" placeholder="Your show name here">
+      <h2>Enter the name of your show to get an email of recommendations of similar shows.</h2>
+      <form class="show-name-form">
+        <label for="show-name">Binge Show Name</label>
+        <input type="text" class="show-name" name="show-name" placeholder="Your binge show name here">
         <input type="submit" name="show-name" value="submit">
       </form>
     </section>
-    <section class="results">
-      <h1>Results</h1>
-      <h2>You will receive and email when the next season of your show is released</h2>
-      <h2>Click here to see similar shows that you might enjoy while you wait.</h2>
-      <a class="go-button" href="#">Go!</a>
-    </section>
-    <section class="similar-shows">
+
+    <section class="similar-shows hidden">
       <h1>Similar shows</h1>
       <h2>Here is a list of shows that are similar to your show!</h2>
       <ul class="similar-show-list">
@@ -38,5 +35,7 @@
       </ul>
       <button type="button" class="new-search">New Search</button>
     </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
   </body>
 </html>
