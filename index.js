@@ -9,7 +9,7 @@ function displayListOfShows(responseJson) {
     $('.similar-show-list').append(`<li>${results[i].Name}</li>`);
   }
   let resultsList = results[i].Name;
-  sendEmail(resultsList);
+  console.log('resultsList is : ', resultsList);
   newSearch();
 }
 
@@ -23,19 +23,19 @@ function newSearch() {
 
 //HIDE THE SHOW-NAME SCREEN AND SHOW THE RESULTS SCREEN.
 //DISPLAY A MESSAGE STATING THE USER WILL RECEIVE AN EMAIL OF THE LIST OF SHOWS
-function sendEmail(resultsList, userEmail) {
+function sendEmail(userEmail) {
   //send email to user
-  Email.send({
-    Host : "smtp.elasticemail.com",
-    Username : "karinagaulin@gmail.com",
-    Password : "3481558e-4642-4d45-b175-344cfb5c3cb6",
-    To : 'them@website.com',
-    From : "you@isp.com",
-    Subject : "This is the subject",
-    Body : "And this is the body"
-}).then(
-  message => alert(message)
-);
+    Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "karinagaulin@gmail.com",
+      Password : "3481558e-4642-4d45-b175-344cfb5c3cb6",
+      To : "${userEmail}",
+      From : "karinagaulin@gmail.com",
+      Subject : "Here is your list of similar shows!",
+      Body : "${resultsList}",
+  }).then(
+    message => alert(message)
+  );
 }
 
 function getListOfShows(showName) {
@@ -77,6 +77,7 @@ function getNameOfShow() {
     console.log('showName: ', showName);
 
     getListOfShows(showName);
+    sendEmail();
   })
 }
 
@@ -88,6 +89,7 @@ function watchEmailForm() {
      console.log(userEmail);
 
      getNameOfShow();
+     sendEmail(userEmail);
   })
 }
 
