@@ -1,14 +1,6 @@
 'use strict';
 
-// function formatQueryParams(params) {
-//   const queryItems = Object.keys(params)
-//     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-//   return queryItems.join('&');
-// }
-
 //DISPLAY LIST OF SIMILAR SHOWS.
-
-
 function displayListOfShows(responseJson) {
   let results = responseJson.Similar.Results;
   console.log('results ', results);
@@ -16,6 +8,8 @@ function displayListOfShows(responseJson) {
     console.log('each result: ',results[i]);
     $('.similar-show-list').append(`<li>${results[i].Name}</li>`);
   }
+  let resultsList = results[i].Name;
+  sendEmail(resultsList);
   newSearch();
 }
 
@@ -25,14 +19,23 @@ function newSearch() {
     $('.enter-show').removeClass('hidden');
   })
 }
-
-//TAKE THE SHOWNAME VALUE AND WHEN THERE IS A CHANGE IN NUMBER OF SEASONS, SEND USER AN EMAIL.
+//Possible future functionality: TAKE THE SHOWNAME VALUE AND WHEN THERE IS A CHANGE IN NUMBER OF SEASONS, SEND USER AN EMAIL.
 
 //HIDE THE SHOW-NAME SCREEN AND SHOW THE RESULTS SCREEN.
 //DISPLAY A MESSAGE STATING THE USER WILL RECEIVE AN EMAIL OF THE LIST OF SHOWS
-function sendEmail(showName) {
+function sendEmail(resultsList, userEmail) {
   //send email to user
-  window.alert('You will be sent an email with this list of shows');
+  Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "karinagaulin@gmail.com",
+    Password : "3481558e-4642-4d45-b175-344cfb5c3cb6",
+    To : 'them@website.com',
+    From : "you@isp.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
 }
 
 function getListOfShows(showName) {
@@ -72,6 +75,7 @@ function getNameOfShow() {
     event.preventDefault();
     let showName = $('.show-name').val();
     console.log('showName: ', showName);
+
     getListOfShows(showName);
   })
 }
@@ -82,6 +86,7 @@ function watchEmailForm() {
     event.preventDefault();
      const userEmail = $('.email').val();
      console.log(userEmail);
+
      getNameOfShow();
   })
 }
