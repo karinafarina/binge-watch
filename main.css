@@ -14,17 +14,23 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
+	/* font-size: 100%; */
+	/* font: inherit; */
 	vertical-align: baseline;
+	list-style-type: none;
+}
+
+body {
+	padding: 40px 100px;
+	height: 100vh;
 }
 
 section {
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 80vh;
   justify-content: space-around;
+	height: 100vh;
 }
 
 .hidden {
@@ -43,8 +49,8 @@ section {
 
 }
 
-.similar-shows {
-
+.similar-shows li {
+	margin-bottom: 30px;
 }
 
 .new-search {

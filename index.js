@@ -6,19 +6,22 @@ let resultsList = [];
 //DISPLAY LIST OF SIMILAR SHOWS.
 function displayListOfShows(responseJson) {
   let results = responseJson.Similar.Results;
+  console.log('results: ', results);
   for(var i = 0; i < results.length; i++) {
-    $('.similar-show-list').append(`<li>${results[i].Name}</li>`);
+    $('.similar-show-list').append(`<li><h3>${results[i].Name}</h3>
+      <p>${results[i].wTeaser}</p></li>`);
     resultsList.push(results[i].Name);
     console.log('resultsList is : ', resultsList);
   };
   sendEmail(resultsList, userEmail);
-  newSearch();
+
 }
 
 function newSearch() {
   $('.new-search').click(function() {
     $('.similar-shows').addClass('hidden');
     $('.enter-show').removeClass('hidden');
+    $('.show-name').val('');
   })
 }
 //Possible future functionality: TAKE THE SHOWNAME VALUE AND WHEN THERE IS A CHANGE IN NUMBER OF SEASONS, SEND USER AN EMAIL.
@@ -37,15 +40,13 @@ function sendEmail(resultsList, userEmail) {
       From : "karinagaulin@gmail.com",
       Subject : "Here is your list of similar shows!",
       Body : resultsList,
-  }).then(
-    message => alert(message)
-  );
+  })
 }
 
 function getListOfShows(showName) {
   $('.enter-show').addClass('hidden');
   $('.similar-shows').removeClass('hidden');
-
+  window.alert('You will be sent an email with this list');
   //get list of similar shows from api
   const options = {
     headers: {
@@ -73,8 +74,10 @@ function getListOfShows(showName) {
    }
 //HIDE THE SIGNUP SECTION AND SHOW THE ENTER SHOW SECTION, STORE THE USER VALUE OF SHOW NAME AS A VARIABLE
 function getNameOfShow() {
+
   $('.sign-up').addClass('hidden');
   $('.enter-show').removeClass('hidden');
+
   $('.show-name-form').submit(event => {
     event.preventDefault();
     let showName = $('.show-name').val();
@@ -98,4 +101,5 @@ function watchEmailForm() {
 $(function() {
   console.log('App loaded, wating for submit');
   watchEmailForm();
+  newSearch();
 });
