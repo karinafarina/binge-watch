@@ -10,7 +10,7 @@ function displayListOfShows(responseJson) {
   for(var i = 0; i < results.length; i++) {
     $('.similar-show-list').append(`<li><h3>${results[i].Name}</h3>
       <p>${results[i].wTeaser}</p></li>`);
-    resultsList.push(results[i].Name);
+    resultsList.join(results[i].Name);
     console.log('resultsList is : ', resultsList);
   };
   sendEmail(resultsList, userEmail);
@@ -21,6 +21,7 @@ function newSearch() {
   $('.new-search').click(function() {
     $('.similar-shows').addClass('hidden');
     $('.enter-show').removeClass('hidden');
+    $('.similar-show-list').empty();
     $('.show-name').val('');
   })
 }
