@@ -1,18 +1,17 @@
 'use strict';
 
 let userEmail;
-let resultsList;
+let resultsList = [];
 
 //DISPLAY LIST OF SIMILAR SHOWS.
 function displayListOfShows(responseJson) {
   let results = responseJson.Similar.Results;
-  console.log('results ', results);
   for(var i = 0; i < results.length; i++) {
-    console.log('each result: ',results[i]);
     $('.similar-show-list').append(`<li>${results[i].Name}</li>`);
+    resultsList.push(results[i].Name);
+    console.log('resultsList is : ', resultsList);
   };
-  resultsList = results[i].Name;
-  console.log('resultsList is : ', resultsList);
+  sendEmail(resultsList, userEmail);
   newSearch();
 }
 
@@ -28,6 +27,8 @@ function newSearch() {
 //DISPLAY A MESSAGE STATING THE USER WILL RECEIVE AN EMAIL OF THE LIST OF SHOWS
 function sendEmail(resultsList, userEmail) {
   //send email to user
+  console.log("This is the email :" + userEmail);
+  console.log("These are the results: " + resultsList);
     Email.send({
       Host : "smtp.elasticemail.com",
       Username : "karinagaulin@gmail.com",
@@ -80,7 +81,6 @@ function getNameOfShow() {
     console.log('showName: ', showName);
 
     getListOfShows(showName);
-    sendEmail();
   })
 }
 
@@ -92,7 +92,6 @@ function watchEmailForm() {
      console.log(userEmail);
 
      getNameOfShow();
-     sendEmail(userEmail);
   })
 }
 
