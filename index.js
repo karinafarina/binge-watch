@@ -5,6 +5,7 @@ let resultsList = [];
 
 //DISPLAY LIST OF SIMILAR SHOWS.
 function displayListOfShows(responseJson) {
+  let myShow = responseJson.Similar.Info;
   let results = responseJson.Similar.Results;
   if(results.length > 0) {
     $('.enter-show').addClass('hidden');
@@ -13,7 +14,7 @@ function displayListOfShows(responseJson) {
     console.log('results: ', results);
 
     for(var i = 0; i < results.length; i++) {
-      $('.similar-show-list').append(`<li><h3>${results[i].Name}</h3>
+      $('.similar-show-list').append(`<li><h2>${results[i].Name}</h2>
         <p>${results[i].wTeaser}</p></li>`);
       resultsList.push(results[i].Name);
       console.log('resultsList is : ', resultsList);
