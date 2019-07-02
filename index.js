@@ -6,15 +6,23 @@ let resultsList = [];
 //DISPLAY LIST OF SIMILAR SHOWS.
 function displayListOfShows(responseJson) {
   let results = responseJson.Similar.Results;
-  console.log('results: ', results);
-  for(var i = 0; i < results.length; i++) {
-    $('.similar-show-list').append(`<li><h3>${results[i].Name}</h3>
-      <p>${results[i].wTeaser}</p></li>`);
-    resultsList.push(results[i].Name);
-    console.log('resultsList is : ', resultsList);
-  };
-  sendEmail(resultsList, userEmail);
+  if(results.length > 0) {
+    $('.enter-show').addClass('hidden');
+    $('.similar-shows').removeClass('hidden');
+    window.alert('You will be sent an email with this list. Please check your spam folder');
+    console.log('results: ', results);
 
+    for(var i = 0; i < results.length; i++) {
+      $('.similar-show-list').append(`<li><h3>${results[i].Name}</h3>
+        <p>${results[i].wTeaser}</p></li>`);
+      resultsList.push(results[i].Name);
+      console.log('resultsList is : ', resultsList);
+    };
+    sendEmail(resultsList, userEmail);
+  } else {
+    window.alert("Please check the spelling of your show. If it is correct, that show may not be in our database. Please try again");
+    $('.show-name').val('');
+  }
 }
 
 function newSearch() {
@@ -45,9 +53,7 @@ function sendEmail(resultsList, userEmail) {
 }
 
 function getListOfShows(showName) {
-  $('.enter-show').addClass('hidden');
-  $('.similar-shows').removeClass('hidden');
-  window.alert('You will be sent an email with this list');
+
   //get list of similar shows from api
   const options = {
     headers: {
@@ -94,7 +100,6 @@ function watchEmailForm() {
     event.preventDefault();
      userEmail = $('.email').val();
      console.log(userEmail);
-
      getNameOfShow();
   })
 }
