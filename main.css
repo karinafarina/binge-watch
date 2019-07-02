@@ -20,17 +20,26 @@ time, mark, audio, video {
 	list-style-type: none;
 }
 
-body {
-	padding: 40px 100px;
-	background: #FFFCE9;
+h1 {
+	font-size: 2.5em;
+	font-family: 'Unica One', cursive;
 }
 
+body {
+	margin: 30px;
+	//background: #FFFCE9;
+	//background-color: #282828;
+	background-color: #0c0032;
+	color: white;
+	font-family: 'Vollkorn', serif;
+}
+
+
 section {
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-	min-height: 100vh;
+	min-height: 80vh;
 }
 
 .hidden {
@@ -38,22 +47,76 @@ section {
 }
 
 .sign-up {
+	text-align: center;
+	width: 100%;
+}
 
+.beach-tv {
+	width: 100%;
+	height: 100vh;
+	opacity: .6;
+	position: absolute;
+	object-fit: cover;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 150px;
+	align-self: center;
+	text-align: center;
+	height: 140px;
+	justify-content: space-around;
+}
+input {
+	background-color: #fff;
+}
+
+input[type="submit"] {
+	width: 54px;
+	align-self: center;
 }
 
 .enter-show {
-
+	text-align: center;
 }
 
 .results {
 
 }
 
-.similar-shows li {
-	margin-bottom: 30px;
+.similar-shows > h1,
+.similar-shows > h3 {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.similar-show-list {
+	margin-bottom: 16px;
+}
+
+.similar-show-list > li {
+	background-color: #3500d3;
+	margin-bottom: 20px;
+	padding-top: 24px;
+	border-radius: 5px;
+}
+
+.similar-show-list > li > h3 {
+	padding: 10px;
+	text-align: center;
+}
+
+.similar-show-list > li > p {
+	padding: 20px;
 }
 
 .new-search {
 	display: flex;
 	align-self: center;
+	background-color: white;
+	border-radius: 5px;
 }
