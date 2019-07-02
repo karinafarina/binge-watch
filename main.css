@@ -22,7 +22,7 @@ time, mark, audio, video {
 
 body {
 	padding: 40px 100px;
-	height: 100vh;
+	background: #FFDA8D;
 }
 
 section {
@@ -30,7 +30,6 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-	height: 100vh;
 }
 
 .hidden {
