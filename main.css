@@ -216,7 +216,8 @@ section.similar-shows {
 	.beach-tv {
 		object-fit: contain;
 	}
-	.sign-up > h3 {
+	.sign-up > h3,
+	.enter-show > h3 {
 		width: 300px;
 		margin: 0 auto;
 		font-size: 22px;
