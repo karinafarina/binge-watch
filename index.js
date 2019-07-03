@@ -5,17 +5,26 @@ let resultsList = [];
 
 //DISPLAY LIST OF SIMILAR SHOWS.
 function displayListOfShows(responseJson) {
-  let myShow = responseJson.Similar.Info;
+  let myShowName = responseJson.Similar.Info[0].Name;
+  let myShowDescription = responseJson.Similar.Info[0].wTeaser;
+  console.log('my show name is: ', myShowName);
   let results = responseJson.Similar.Results;
   if(results.length > 0) {
     $('.enter-show').addClass('hidden');
     $('.similar-shows').removeClass('hidden');
     window.alert('You will be sent an email with this list. Please check your spam folder');
     console.log('results: ', results);
-
+    $('.similar-show-list').append(`<li class="my-show">
+    <h2>${myShowName}</h2>
+    <p>${myShowDescription}</p>
+    </li>`)
     for(var i = 0; i < results.length; i++) {
-      $('.similar-show-list').append(`<li><h2>${results[i].Name}</h2>
-        <p>${results[i].wTeaser}</p></li>`);
+      $('.similar-show-list').append(`
+
+          <li>
+          <h2>${results[i].Name}</h2>
+          <p>${results[i].wTeaser}</p>
+          </li>`);
       resultsList.push(results[i].Name);
       console.log('resultsList is : ', resultsList);
     };

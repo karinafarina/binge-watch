@@ -21,14 +21,31 @@ time, mark, audio, video {
 }
 
 h1 {
+	display: inline-block;
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
 	font-size: 2.5em;
 	font-family: 'Unica One', cursive;
+	position: relative;
+}
+
+h1::after {
+	content: '';
+	width: 47%;
+	height: 4px;
+	background: linear-gradient(45deg, #fff, #3500d3);
+	position: absolute;
+	bottom: -7%;
+	left: 26%;
+}
+
+h3 {
+	font-size: 18px;
 }
 
 body {
 	margin: 30px;
-	//background: #FFFCE9;
-	//background-color: #282828;
 	background-color: #0c0032;
 	color: white;
 	font-family: 'Vollkorn', serif;
@@ -79,11 +96,11 @@ input {
 }
 
 input:hover {
-
+	background-color:
 }
 
 input:focus {
-	outline: none;
+	outline-color: #3500d3;
 }
 
 input[type="submit"] {
@@ -103,9 +120,31 @@ input[type="submit"] {
 
 }
 
-.binge {
+.binge-header {
+	position: relative;
 	text-transform: uppercase;
 	color: #3500d3;
+	font-weight: bold;
+}
+
+.binge {
+	position: relative;
+	text-transform: uppercase;
+	color: #3500d3;
+	font-family: 'Unica One', cursive;
+	font-weight: bold;
+	font-size: 22px;
+}
+
+.binge::after {
+	display: block;
+	content: '';
+	width: 85%;
+	height: 2px;
+	background: linear-gradient(45deg, #fff, #3500d3);
+	position: absolute;
+	bottom: 0;
+	left: 6%;
 }
 
 .similar-shows > h1,
