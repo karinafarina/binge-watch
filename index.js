@@ -40,7 +40,6 @@ function newSearch() {
     $('.show-name').val('');
   })
 }
-//Possible future functionality: TAKE THE SHOWNAME VALUE AND WHEN THERE IS A CHANGE IN NUMBER OF SEASONS, SEND USER AN EMAIL.
 
 //HIDE THE SHOW-NAME SCREEN AND SHOW THE RESULTS SCREEN.
 //DISPLAY A MESSAGE STATING THE USER WILL RECEIVE AN EMAIL OF THE LIST OF SHOWS
@@ -58,7 +57,6 @@ function sendEmail(resultsList, userEmail) {
 }
 
 function getListOfShows(showName) {
-
   //get list of similar shows from api
   const options = {
     headers: {
@@ -81,9 +79,9 @@ function getListOfShows(showName) {
        $('#js-error-message').css('display', 'block').text(`Something went wrong: ${err.message}`);
      });
    }
+
 //HIDE THE SIGNUP SECTION AND SHOW THE ENTER SHOW SECTION, STORE THE USER VALUE OF SHOW NAME AS A VARIABLE
 function getNameOfShow() {
-
   $('.sign-up').addClass('hidden');
   $('.enter-show').removeClass('hidden');
 
