@@ -44,6 +44,16 @@ h1::after {
 	left: 26%;
 }
 
+.similar-shows h1::after {
+	content: '';
+	width: 47%;
+	height: 4px;
+	background: linear-gradient(45deg, #3500d3,  #fff);
+	position: absolute;
+	bottom: -7%;
+	left: 26%;
+}
+
 h3 {
 	font-size: 18px;
 }
@@ -56,8 +66,11 @@ body {
 
 
 section {
+	display: -webkit-flex;
   display: flex;
+	flex-direction: -webkit-column;
   flex-direction: column;
+	justify-content: -webkit-space-evenly;
   justify-content: space-evenly;
 	height: 100vh;
 	z-index: 10;
@@ -85,12 +98,15 @@ section {
 }
 
 form {
+	display: -webkit-flex;
 	display: flex;
+	flex-direction: -webkit-column;
 	flex-direction: column;
 	width: 150px;
+	align-self: -webkit-center;
 	align-self: center;
-	text-align: center;
-	height: 140px;
+	height: 10%;
+	justify-content: -webkit-space-around;
 	justify-content: space-around;
 }
 input {
@@ -181,7 +197,9 @@ section.similar-shows {
 }
 
 .new-search {
+	display: -webkit-flex;
 	display: flex;
+	align-self: -webkit-center;
 	align-self: center;
 	background-color: white;
 	border-radius: 5px;
@@ -191,7 +209,7 @@ section.similar-shows {
 		font-size: 145%;
 	}
 	h3 {
-		font-size: 28px;
+		font-size: 32px;
 	}
 	input {
 		font-size: 16px;
@@ -208,6 +226,15 @@ section.similar-shows {
 	.similar-shows > h1, .similar-shows > h3 {
 		margin-bottom: 50px;
 	}
+	.new-search {
+		font-size: 20px;
+	}
+	form {
+		width: 200px;
+	}
+	input {
+		font-size: 20px;
+	}
 }
 @media only screen and (min-width: 992px) {
 	section {
@@ -218,12 +245,12 @@ section.similar-shows {
 	}
 	.sign-up > h3,
 	.enter-show > h3 {
-		width: 300px;
+		width: 440px;
 		margin: 0 auto;
-		font-size: 22px;
+		font-size: 30px;
 	}
 	.similar-shows {
-		width: 600px;
+		width: 750px;
 		margin: 0 auto;
 	}
 }
