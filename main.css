@@ -54,6 +54,10 @@ h1::after {
 	left: 26%;
 }
 
+#js-error-message {
+	display: none;
+}
+
 h3 {
 	font-size: 18px;
 }
@@ -243,6 +247,17 @@ section.similar-shows {
 	.beach-tv {
 		object-fit: contain;
 	}
+
+	.sign-up {
+		justify-content: space-between;
+		padding-top: 60px;
+		height: 60vh;
+	}
+
+	.sign-up h3 {
+		margin-top: 0
+	}
+
 	.sign-up > h3,
 	.enter-show > h3 {
 		width: 440px;
@@ -252,5 +267,8 @@ section.similar-shows {
 	.similar-shows {
 		width: 750px;
 		margin: 0 auto;
+	}
+	.binge {
+		font-size: 30px;
 	}
 }

@@ -86,7 +86,7 @@ function getListOfShows(showName) {
        displayListOfShows(responseJson)
      })
      .catch(err => {
-       $('#js-error-message').text(`Something went wrong: ${err.message}`);
+       $('#js-error-message').css('display', 'block').text(`Something went wrong: ${err.message}`);
      });
    }
 //HIDE THE SIGNUP SECTION AND SHOW THE ENTER SHOW SECTION, STORE THE USER VALUE OF SHOW NAME AS A VARIABLE
