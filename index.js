@@ -7,13 +7,11 @@ let resultsList = [];
 function displayListOfShows(responseJson) {
   let myShowName = responseJson.Similar.Info[0].Name;
   let myShowDescription = responseJson.Similar.Info[0].wTeaser;
-  console.log('my show name is: ', myShowName);
   let results = responseJson.Similar.Results;
   if(results.length > 0) {
     $('.enter-show').addClass('hidden');
     $('.similar-shows').removeClass('hidden');
     window.alert('You will be sent an email with this list. Please check your spam folder');
-    console.log('results: ', results);
     $('.similar-show-list').append(`<li class="my-show">
     <h2>${myShowName}</h2>
     <p>${myShowDescription}</p>
@@ -26,7 +24,6 @@ function displayListOfShows(responseJson) {
           <p>${results[i].wTeaser}</p>
           </li>`);
       resultsList.push(results[i].Name);
-      console.log('resultsList is : ', resultsList);
     };
     sendEmail(resultsList, userEmail);
   } else {
@@ -49,8 +46,6 @@ function newSearch() {
 //DISPLAY A MESSAGE STATING THE USER WILL RECEIVE AN EMAIL OF THE LIST OF SHOWS
 function sendEmail(resultsList, userEmail) {
   //send email to user
-  console.log("This is the email :" + userEmail);
-  console.log("These are the results: " + resultsList);
     Email.send({
       Host : "smtp.elasticemail.com",
       Username : "karinagaulin@gmail.com",
@@ -71,18 +66,15 @@ function getListOfShows(showName) {
       }
   }
   const url = `https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?q=${showName}&type=shows&info=1&limit=8&k=266210-Similars-D2TGC2V3`;
-  console.log('url is: ', url);
 
   fetch(url, options)
     .then(response => {
-      console.log('response is: ', response);
       if(response.ok) {
         return response.json();
       }
       throw new Error(response.statusText);
     })
     .then(responseJson =>{
-      console.log('responseJson: ', responseJson)
        displayListOfShows(responseJson)
      })
      .catch(err => {
@@ -98,7 +90,6 @@ function getNameOfShow() {
   $('.show-name-form').submit(event => {
     event.preventDefault();
     let showName = $('.show-name').val();
-    console.log('showName: ', showName);
 
     getListOfShows(showName);
   })
@@ -109,13 +100,11 @@ function watchEmailForm() {
   $('.email-form').submit(event => {
     event.preventDefault();
      userEmail = $('.email').val();
-     console.log(userEmail);
      getNameOfShow();
   })
 }
 
 $(function() {
-  console.log('App loaded, wating for submit');
   watchEmailForm();
   newSearch();
 });
